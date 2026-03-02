@@ -53,13 +53,14 @@
 - Safari Support
 - Claude AI Option
 - Deepseek Option
-- Image Uploading
+- Save Chats
+- Popout sidebar
 - Read from current page (as context)
 - Upload images (for applicable models)
 
 ## Known Issues
 >If you've encountered an issue not listed here, report it [here.](https://github.com/Woobat-8/AI-Sidebar-Extension/issues) This covers known issues or untested features I’m aware of and actively working on. One or more will **likely** be fixed in the next **patch**.
-- N/A
+- Very long responses sometimes cause UI to scale incorrectly. (Happened twice, unable to reproduce reliably)
 
 ## License and Credits
 #### Licensed under the [GPLv3 License.](https://github.com/Woobat-8/AI-Sidebar-Extension/blob/main/LICENSE) Special thanks to a friend for helping with the JavaScript files `background.js` and `chat.js`!

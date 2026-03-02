@@ -1,0 +1,102 @@
+/*
+AI Assistant Sidebar
+Copyright (C) 2026 Woobat8
+
+A copy of the lisence can be found at <https://github.com/Woobat-8/AI-Sidebar-Extension/blob/main/LICENSE> 
+If you don't have access to the lisence, see <https://www.gnu.org/licenses/>.
+*/
+* {
+  box-sizing: border-box;
+}
+
+.hidden {
+  display: none !important;
+}
+
+body {
+  margin: 0;
+  padding: 24px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 14px;
+  color: #ffffff;
+  background: #050505;
+}
+
+.card {
+  max-width: 420px;
+  padding: 24px;
+  background: #111111;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+}
+
+h1 {
+  margin: 0 0 8px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.hint {
+  margin: 0 0 20px;
+  color: #bbbbbb;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+label {
+  display: block;
+  margin: 16px 0 6px;
+  font-weight: 500;
+  color: #f0f0f0;
+}
+
+label:first-of-type {
+  margin-top: 0;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 14px;
+  border: 1px solid #444444;
+  border-radius: 8px;
+  background: #000000;
+  color: #ffffff;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: #ffffff;
+}
+
+button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #ffffff;
+  background: #222222;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #333333;
+}
+
+.status {
+  margin-top: 12px;
+  font-size: 13px;
+  color: #ffffff;
+}
+
+.status.success {
+  color: #9be7a5;
+}
+
+.status.error {
+  color: #ff9b9b;
+}

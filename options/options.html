@@ -1,0 +1,55 @@
+<!--
+AI Assistant Sidebar
+Copyright (C) 2026 Woobat8
+
+A copy of the lisence can be found at <https://github.com/Woobat-8/AI-Sidebar-Extension/blob/main/LICENSE> 
+If you don't have access to the lisence, see <https://www.gnu.org/licenses/>.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Sidebar — Options</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <div class="card">
+    <h1>Assistant Sidebar</h1>
+    <p class="hint">API keys are stored locally and only sent to the provider you choose.</p>
+    <label for="provider">Provider</label>
+    <select id="provider">
+      <option value="openai">OpenAI (GPT)</option>
+      <option value="gemini">Google (Gemini)</option>
+    </select>
+    <div id="openaiSection">
+      <label for="openaiApiKey">OpenAI API key</label>
+      <input type="password" id="openaiApiKey" placeholder="sk-…" autocomplete="off">
+      <label for="openaiModel">Model</label>
+      <select id="openaiModel">
+        <option value="gpt-4.1-nano">GPT 4.1-nano (reccomended)</option>
+        <option value="gpt-4.1-mini">GPT 4.1-mini</option>
+        <option value="gpt-4.1">GPT 4.1</option>
+        <option value="gpt-5-nano">GPT 5-nano (cheapest)</option>
+        <option value="gpt-5-mini">GPT 5-mini</option>
+        <option value="gpt-5.1">GPT 5.1 (expensive)</option>
+      </select>
+    </div>
+    <div id="geminiSection">
+      <label for="geminiApiKey">Gemini API key</label>
+      <input type="password" id="geminiApiKey" placeholder="AIza…" autocomplete="off">
+      <label for="geminiModel">Model</label>
+      <select id="geminiModel">
+        <option value="gemini-2.5-flash-lite">Gemini 2.5 flash lite (reccomended)</option>
+        <option value="gemini-2.5-flash">Gemini 2.5 flash</option>
+        <option value="gemini-2.5-pro">Gemini 2.5 Pro</option>
+        <option value="gemini-3-flash">Gemini 3 Flash (expensive)</option>
+        <option value="gemini-3-pro">Gemini 3 Pro (expensive)</option>
+      </select>
+    </div>
+    <button type="button" id="save">Save</button>
+    <p id="status" class="status" aria-live="polite"></p>
+  </div>
+  <script src="options.js"></script>
+</body>
+</html>

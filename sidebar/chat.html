@@ -1,0 +1,34 @@
+<!--
+AI Assistant Sidebar
+Copyright (C) 2026 Woobat8
+
+A copy of the lisence can be found at <https://github.com/Woobat-8/AI-Sidebar-Extension/blob/main/LICENSE> 
+If you don't have access to the lisence, see <https://www.gnu.org/licenses/>.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sidebar Chat</title>
+  <link rel="stylesheet" href="chat.css">
+</head>
+<body>
+  <div class="controls-row">
+    <button type="button" id="toggleCollapse" class="collapse-btn" aria-label="Minimize sidebar" aria-pressed="false">−</button>
+    <button type="button" id="reloadExtension" class="reload-btn" aria-label="Reload extension">⟳</button>
+  </div>
+  <div id="noKey" class="card no-key hidden">
+    <p>Add your OpenAI or Gemini API key in extension options to use the chat.</p>
+    <button type="button" id="openOptions">Open options</button>
+  </div>
+  <div id="chatWrap" class="chat-wrap">
+    <div id="messages" class="messages" role="log"></div>
+    <form id="form" class="input-row">
+      <input type="text" id="input" placeholder="Message…" autocomplete="off" aria-label="Message">
+      <button type="submit" id="send" aria-label="Send">Send</button>
+    </form>
+  </div>
+  <script src="chat.js"></script>
+</body>
+</html>

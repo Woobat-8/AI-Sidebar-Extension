@@ -3,9 +3,10 @@
 <p align="center">AI chat in a simple sidebar. Use your own API keys. Works with OpenAI and Google Gemini. Works with Firefox based browsers.</p>
 
 <p align="center">
-  <a href="#install-from-store">Install from Store</a> |
-  <a href="#download-locally">Download Locally</a> |
+  <a href="#install-from-store">Install</a> |
+  <a href="#download-locally">Download</a> |
   <a href="#usage">Usage</a> |
+  <a href="#free-api-keys">Free API Keys</a> |
   <a href="#future-plans">Future Plans</a> |
   <a href="#known-issues">Known Issues</a> |
   <a href="#license-and-credits">License and Credits</a>
@@ -16,6 +17,7 @@
 ### Install the latest version from the [Firefox Extensions Page!](link here when published)
 
 #### View the latest version's release notes [here.](https://github.com/Woobat-8/AI-Sidebar-Extension/releases/latest)
+#### Get a 100% free API Key [here.](https://github.com/Woobat-8/AI-Sidebar-Extension/tree/main?tab=readme-ov-file#free-api-keys)
 
 ## Download Locally
 >If you are unable to access the extensions page for your browser, or wish to modify the extension to your liking, you can run locally out of a .zip or .xpi file.
@@ -34,6 +36,15 @@
 2. Run the extension and go to `Options` when prompted
 3. Select your provider, input your API key, select your model, and press `Save`
 4. Reload the extension if it doesn't automatically, and chat!
+
+## Free API Keys
+>A "Free" tier is available through Google's Gemini with acceptable limits on ligher models. Signing up requires a Google account that has a verified age.
+1. Go to [aistudio.google.com](https://aistudio.google.com/api-keys) and sign in.
+2. Click `Get API Key` in the bottom-left sidebar.
+3. Select `Create API key in New Project`
+4. Your API key will be displayed, **copy it and save it somewhere local** as you won't be able to view it again.
+5. Paste the key into the `Options` menu whem prompted and Save.
+6. Select the reccomended model and begin chat!
 
 ## Future Plans
 >One or more of these will be included in the next **minor** version.

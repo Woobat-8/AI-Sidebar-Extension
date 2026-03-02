@@ -14,10 +14,10 @@
 
 ## Install from Store
 >This extension requires you to have an active, working API key with either OpenAI's GPT or Google's Gemini. Your API key is stored locally and sent ONLY to the selected provider.
-### Install the latest version from the [Firefox Extensions Page!](link here when published)
+### Install the latest version from the [Firefox Extensions Page!](https://addons.mozilla.org/en-US/firefox/addon/ai-assistant-sidebar/)
 
 #### View the latest version's release notes [here.](https://github.com/Woobat-8/AI-Sidebar-Extension/releases/latest)
-#### Get a 100% free API Key [here.](https://github.com/Woobat-8/AI-Sidebar-Extension/tree/main?tab=readme-ov-file#free-api-keys)
+#### Get a free Gemini API Key [here.](https://github.com/Woobat-8/AI-Sidebar-Extension/tree/main?tab=readme-ov-file#free-api-keys)
 
 ## Download Locally
 >If you are unable to access the extensions page for your browser, or wish to modify the extension to your liking, you can run locally out of a .zip or .xpi file.
@@ -38,13 +38,13 @@
 4. Reload the extension if it doesn't automatically, and chat!
 
 ## Free API Keys
->A "Free" tier is available through Google's Gemini with acceptable limits on ligher models. Signing up requires a Google account that has a verified age.
+>A "Free" tier is available through Google's Gemini with acceptable limits on lighter models. Signing up requires a Google account that has a verified age.
 1. Go to [aistudio.google.com](https://aistudio.google.com/api-keys) and sign in.
 2. Click `Get API Key` in the bottom-left sidebar.
 3. Select `Create API key in New Project`
 4. Your API key will be displayed, **copy it and save it somewhere local** as you won't be able to view it again.
-5. Paste the key into the `Options` menu whem prompted and Save.
-6. Select the reccomended model and begin chat!
+5. Paste the key into the `Options` menu when prompted and Save.
+6. Select the recommended model and begin chat!
 
 ## Future Plans
 >One or more of these will be included in the next **minor** version.
@@ -62,5 +62,5 @@
 - N/A
 
 ## License and Credits
-#### Licensed under the [GPLv3 License.](https://github.com/Woobat-8/AI-Sidebar-Extension/blob/main/LICENSE) HUGE thanks to a friend of mine for helping with the JavaScript files `background.js` and `chat.js`!
+#### Licensed under the [GPLv3 License.](https://github.com/Woobat-8/AI-Sidebar-Extension/blob/main/LICENSE) Special thanks to a friend for helping with the JavaScript files `background.js` and `chat.js`!
 #### © 2026 [Woobat8](https://github.com/Woobat-8)

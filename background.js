@@ -20,6 +20,8 @@ If you don't have access to the lisence, see <https://www.gnu.org/licenses/>.
 
 const OPENAI_URL = "https://api.openai.com/v1/chat/completions";
 const GEMINI_BASE = "https://generativelanguage.googleapis.com/v1beta/models";
+const ANTHROPIC_URL = "https://api.anthropic.com/v1/messages";
+const ANTHROPIC_VERSION = "2023-06-01";
 
 browser.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message.type === "chat") {
@@ -46,18 +48,37 @@ async function getStoredSettings() {
     "provider",
     "openaiApiKey",
     "geminiApiKey",
+    "claudeApiKey",
     "openaiModel",
     "geminiModel",
+    "claudeModel",
     "apiKey",
     "model",
   ]);
   const provider = out.provider || "openai";
   const openaiApiKey = (out.openaiApiKey || out.apiKey || "").trim();
   const geminiApiKey = (out.geminiApiKey || "").trim();
-  const apiKey = provider === "gemini" ? geminiApiKey : openaiApiKey;
+  const claudeApiKey = (out.claudeApiKey || "").trim();
+
+  let apiKey;
+  if (provider === "gemini") {
+    apiKey = geminiApiKey;
+  } else if (provider === "claude") {
+    apiKey = claudeApiKey;
+  } else {
+    apiKey = openaiApiKey;
+  }
+
   const openaiModel = out.openaiModel || out.model || "gpt-4o-mini";
-  const geminiModel = out.geminiModel || "gemini-2.5-flash-lite-preview";
-  const model = provider === "gemini" ? geminiModel : openaiModel;
+  const geminiModel = out.geminiModel || "gemini-2.5-flash-lite";
+  const claudeModel = out.claudeModel || "claude-haiku-4-5";
+  const model =
+    provider === "gemini"
+      ? geminiModel
+      : provider === "claude"
+      ? claudeModel
+      : openaiModel;
+
   return { provider, apiKey, model };
 }
 
@@ -75,7 +96,115 @@ async function handleChat(messages, stream, modelOverride, requestId, sendRespon
   if (provider === "gemini") {
     return handleGeminiChat(key, effectiveModel, messages, stream, requestId, sendResponse);
   }
+  if (provider === "claude") {
+    return handleClaudeChat(key, effectiveModel, messages, stream, requestId, sendResponse);
+  }
   return handleOpenAIChat(key, effectiveModel, messages, stream, requestId, sendResponse);
+}
+
+function openAIMessagesToAnthropic(messages) {
+  const anthropicMessages = [];
+  const systemParts = [];
+
+  for (const msg of messages) {
+    if (msg.role === "system") {
+      if (msg.content) {
+        systemParts.push(msg.content);
+      }
+      continue;
+    }
+    let role = msg.role;
+    if (role === "assistant") role = "assistant";
+    else role = "user";
+    anthropicMessages.push({
+      role,
+      content: msg.content || "",
+    });
+  }
+
+  const system = systemParts.length ? systemParts.join("\n\n") : null;
+  return { messages: anthropicMessages, system };
+}
+
+async function handleClaudeChat(apiKey, model, messages, stream, requestId, sendResponse) {
+  const { messages: anthropicMessages, system } = openAIMessagesToAnthropic(messages);
+
+  const body = {
+    model,
+    max_tokens: 8192,
+    messages: anthropicMessages,
+    stream: Boolean(stream),
+    ...(system ? { system } : {}),
+  };
+
+  const res = await fetch(ANTHROPIC_URL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "x-api-key": apiKey,
+      "anthropic-version": ANTHROPIC_VERSION,
+    },
+    body: JSON.stringify(body),
+  });
+
+  if (!res.ok) {
+    const err = await res.text();
+    try {
+      const j = JSON.parse(err);
+      const msg = j.error?.message || res.statusText || "API error";
+      return sendResponse({ error: msg });
+    } catch (_) {
+      return sendResponse({ error: res.statusText || "API error" });
+    }
+  }
+
+  if (stream && res.body) {
+    const reader = res.body.getReader();
+    const decoder = new TextDecoder();
+    let buffer = "";
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      buffer += decoder.decode(value, { stream: true });
+      const lines = buffer.split("\n");
+      buffer = lines.pop() || "";
+      for (const line of lines) {
+        const trimmed = line.trim();
+        if (!trimmed || !trimmed.startsWith("data:")) continue;
+        const payload = trimmed.slice(5).trim();
+        if (!payload || payload === "[DONE]") continue;
+        try {
+          const evt = JSON.parse(payload);
+          if (evt.type === "content_block_delta") {
+            const text = evt.delta?.text;
+            if (text && requestId) {
+              try {
+                browser.runtime.sendMessage({
+                  type: "streamChunk",
+                  requestId,
+                  content: text,
+                }).catch(() => {});
+              } catch (_) {}
+            }
+          }
+        } catch (_) {}
+      }
+    }
+    return sendResponse({ streamDone: true });
+  }
+
+  const data = await res.json();
+  let content = "";
+  if (Array.isArray(data.content) && data.content.length > 0) {
+    for (const block of data.content) {
+      if (typeof block.text === "string") {
+        content += block.text;
+      } else if (block.type === "text" && typeof block.text === "string") {
+        content += block.text;
+      }
+    }
+  }
+  return sendResponse({ content });
 }
 
 async function handleOpenAIChat(apiKey, model, messages, stream, requestId, sendResponse) {

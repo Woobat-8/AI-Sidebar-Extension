@@ -21,6 +21,7 @@ If you don't have access to the lisence, see <https://www.gnu.org/licenses/>.
     <select id="provider">
       <option value="openai">OpenAI (GPT)</option>
       <option value="gemini">Google (Gemini)</option>
+      <option value="claude">Anthropic (Claude)</option>
     </select>
     <div id="openaiSection">
       <label for="openaiApiKey">OpenAI API key</label>
@@ -45,6 +46,15 @@ If you don't have access to the lisence, see <https://www.gnu.org/licenses/>.
         <option value="gemini-2.5-pro">Gemini 2.5 Pro</option>
         <option value="gemini-3-flash">Gemini 3 Flash (expensive)</option>
         <option value="gemini-3-pro">Gemini 3 Pro (expensive)</option>
+      </select>
+    </div>
+    <div id="claudeSection">
+      <label for="claudeApiKey">Claude API key</label>
+      <input type="password" id="claudeApiKey" placeholder="sk-ant-…" autocomplete="off">
+      <label for="claudeModel">Model</label>
+      <select id="claudeModel">
+        <option value="claude-haiku-4-5">Claude Haiku 4.5 (recommended)</option>
+        <option value="claude-sonnet-4-6">Claude Sonnet 4.6</option>
       </select>
     </div>
     <button type="button" id="save">Save</button>

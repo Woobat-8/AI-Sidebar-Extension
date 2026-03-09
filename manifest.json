@@ -5,7 +5,11 @@
   "author": "Woobat8",
   "description": "AI chat in a sidebar. Use your own API keys.",
   "permissions": ["storage"],
-  "host_permissions": ["https://api.openai.com/*", "https://generativelanguage.googleapis.com/*"],
+  "host_permissions": [
+    "https://api.openai.com/*",
+    "https://generativelanguage.googleapis.com/*",
+    "https://api.anthropic.com/*"
+  ],
   "background": {
     "scripts": ["background.js"]
   },

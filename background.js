@@ -23,6 +23,12 @@ const GEMINI_BASE = "https://generativelanguage.googleapis.com/v1beta/models";
 const ANTHROPIC_URL = "https://api.anthropic.com/v1/messages";
 const ANTHROPIC_VERSION = "2023-06-01";
 
+if (browser.action && browser.action.onClicked) {
+  browser.action.onClicked.addListener(() => {
+    browser.runtime.reload();
+  });
+}
+
 browser.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message.type === "chat") {
     const requestId = message.requestId;

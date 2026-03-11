@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "AI Assistant Sidebar",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "author": "Woobat8",
   "description": "AI chat in a sidebar. Use your own API keys.",
   "permissions": ["storage"],
@@ -11,10 +11,13 @@
     "https://api.anthropic.com/*"
   ],
   "background": {
-    "scripts": ["background.js"]
+    "service_worker": "background.js"
   },
   "action": {
     "default_title": "Reload AI Assistant Sidebar"
+  },
+  "side_panel": {
+    "default_path": "sidebar/chat.html"
   },
   "sidebar_action": {
     "default_panel": "sidebar/chat.html",

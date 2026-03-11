@@ -1,6 +1,6 @@
 <h1 align="center">AI Sidebar Chat</h1>
 
-<p align="center">AI chat in a simple sidebar. Use your own API keys. Works with OpenAI and Google Gemini. Works with Firefox based browsers.</p>
+<p align="center">AI chat in a simple sidebar. Use your own API keys. Works with OpenAI, Google Gemini, and Claude. Works with Firefox-based and Chromium-based browsers.</p>
 
 <p align="center">
   <a href="#install-from-store">Install</a> |
@@ -20,7 +20,7 @@
 #### Get a free Gemini API Key [here.](https://github.com/Woobat-8/AI-Sidebar-Extension/tree/main?tab=readme-ov-file#free-api-keys)
 
 ## Download Locally
->If you are unable to access the extensions page for your browser, or wish to modify the extension to your liking, you can run locally out of a .zip or .xpi file.
+>If you are unable to access the extensions page for your browser, or wish to modify the extension to your liking, you can run locally out of a `.zip`, `.xpi`, or `.crx` file.
 
 ### Steps
 #### Firefox-based:
@@ -30,9 +30,15 @@
 4. Once you've made your changes, re-zip to a `.zip` or `.xpi` file and repeat Step 2.
 5. If you don't wish to re-zip, go to `about:debugging` → `This [browser]` → `Load Temporary Add-on` and select `manifest.json` to load.
 
+#### Chromium-based (Chrome, Edge, etc.):
+1. Download the latest version [here](https://github.com/Woobat-8/AI-Sidebar-Extension/releases) and **unzip.**
+2. Go to `chrome://extensions` (or your Chromium-based browser's extensions page) and enable **Developer mode**.
+3. Click `Load unpacked` and select the unzipped `ai-sidebar-extension` folder containing `manifest.json` and select it.
+4. Use from there, or modify as you wish. Remember to reload the extension in ``chrome://extensions` after modification.
+
 ## Usage
 >This extension requires you to have an active, working API key. Google Gemini offers a "Free" plan with limits to users with a valid Google account. OpenAI does not offer a free plan, but has reasonable, relatively cheap token prices.
-1. Install or Download `.zip`/`.xpi`
+1. Install or Download `.zip`/`.xpi`/`.crx`
 2. Run the extension and go to `Options` when prompted
 3. Select your provider, input your API key, select your model, and press `Save`
 4. Reload the extension if it doesn't automatically, and chat!
@@ -49,7 +55,7 @@
 ## Future Plans
 >One or more of these will be included in the next **minor** version.
 ### In no particular order:
-- Chromium Support (priority)
+- Chromium Support (In Progress)
 - Safari Support
 - Claude AI Option (DONE - UNTESTED)
 - Deepseek Option

@@ -18,14 +18,82 @@ A copy of the lisence can be found at <https://github.com/Woobat-8/AI-Sidebar-Ex
 If you don't have access to the lisence, see <https://www.gnu.org/licenses/>.
 */
 
+try {
+  if (typeof browser === "undefined" && typeof chrome !== "undefined") {
+    var browser = (function () {
+      function wrapAsync(fn) {
+        return function (...args) {
+          return new Promise((resolve, reject) => {
+            fn(...args, (result) => {
+              const err = chrome.runtime && chrome.runtime.lastError;
+              if (err) {
+                reject(err);
+              } else {
+                resolve(result);
+              }
+            });
+          });
+        };
+      }
+
+      const runtime = {
+        ...chrome.runtime,
+        sendMessage: wrapAsync(chrome.runtime.sendMessage),
+        openOptionsPage: chrome.runtime.openOptionsPage
+          ? wrapAsync(chrome.runtime.openOptionsPage)
+          : undefined,
+      };
+
+      const storage = {
+        ...chrome.storage,
+        local: {
+          get: wrapAsync(chrome.storage.local.get),
+          set: wrapAsync(chrome.storage.local.set),
+        },
+      };
+
+      return {
+        ...chrome,
+        runtime,
+        storage,
+      };
+    })();
+  }
+} catch (_) {}
+
 const OPENAI_URL = "https://api.openai.com/v1/chat/completions";
 const GEMINI_BASE = "https://generativelanguage.googleapis.com/v1beta/models";
 const ANTHROPIC_URL = "https://api.anthropic.com/v1/messages";
 const ANTHROPIC_VERSION = "2023-06-01";
 
 if (browser.action && browser.action.onClicked) {
-  browser.action.onClicked.addListener(() => {
-    browser.runtime.reload();
+  browser.action.onClicked.addListener(async (tab) => {
+    try {
+      if (browser.sidePanel && typeof browser.sidePanel.open === "function") {
+        const windowId = tab && tab.windowId;
+        await browser.sidePanel.open(
+          windowId != null ? { windowId } : undefined
+        );
+        if (browser.sidePanel.setOptions && tab && tab.id != null) {
+          await browser.sidePanel.setOptions({
+            tabId: tab.id,
+            path: "sidebar/chat.html",
+          });
+        }
+        return;
+      }
+    } catch (_) {}
+
+    if (browser.sidebarAction && typeof browser.sidebarAction.open === "function") {
+      try {
+        await browser.sidebarAction.open();
+        return;
+      } catch (_) {}
+    }
+
+    if (browser.runtime && typeof browser.runtime.reload === "function") {
+      browser.runtime.reload();
+    }
   });
 }
 

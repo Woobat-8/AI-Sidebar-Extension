@@ -54,6 +54,9 @@ try {
 
       return {
         ...chrome,
+        action: chrome.action,
+        sidePanel: chrome.sidePanel,
+        sidebarAction: chrome.sidebarAction,
         runtime,
         storage,
       };
@@ -65,6 +68,18 @@ const OPENAI_URL = "https://api.openai.com/v1/chat/completions";
 const GEMINI_BASE = "https://generativelanguage.googleapis.com/v1beta/models";
 const ANTHROPIC_URL = "https://api.anthropic.com/v1/messages";
 const ANTHROPIC_VERSION = "2023-06-01";
+
+if (browser.sidePanel && typeof browser.sidePanel.setPanelBehavior === "function") {
+  browser.sidePanel
+    .setPanelBehavior({ openPanelOnActionClick: true })
+    .catch(() => {});
+}
+
+if (browser.sidePanel && typeof browser.sidePanel.setOptions === "function") {
+  browser.sidePanel
+    .setOptions({ path: "sidebar/chat.html", enabled: true })
+    .catch(() => {});
+}
 
 if (browser.action && browser.action.onClicked) {
   browser.action.onClicked.addListener(async (tab) => {

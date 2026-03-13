@@ -14,19 +14,15 @@
     "service_worker": "background.js"
   },
   "action": {
-    "default_title": "Reload AI Assistant Sidebar"
-  },
-  "side_panel": {
-    "default_path": "sidebar/chat.html"
-  },
-  "sidebar_action": {
-    "default_panel": "sidebar/chat.html",
-    "default_title": "Sidebar Chat",
+    "default_title": "Reload AI Assistant Sidebar",
     "default_icon": {
       "16": "icons/ico_16.png",
       "32": "icons/ico_32.png",
       "48": "icons/ico_48.png"
     }
+  },
+  "side_panel": {
+    "default_path": "sidebar/chat.html"
   },
   "options_ui": {
     "page": "options/options.html"

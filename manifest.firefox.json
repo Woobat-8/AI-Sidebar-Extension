@@ -1,0 +1,49 @@
+{
+  "manifest_version": 3,
+  "name": "AI Assistant Sidebar",
+  "version": "1.0.3",
+  "author": "Woobat8",
+  "description": "AI chat in a sidebar. Use your own API keys.",
+  "permissions": ["storage"],
+  "host_permissions": [
+    "https://api.openai.com/*",
+    "https://generativelanguage.googleapis.com/*",
+    "https://api.anthropic.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "Reload AI Assistant Sidebar",
+    "default_icon": {
+      "16": "icons/ico_16.png",
+      "32": "icons/ico_32.png",
+      "48": "icons/ico_48.png"
+    }
+  },
+  "sidebar_action": {
+    "default_panel": "sidebar/chat.html",
+    "default_title": "Sidebar Chat",
+    "default_icon": {
+      "16": "icons/ico_16.png",
+      "32": "icons/ico_32.png",
+      "48": "icons/ico_48.png"
+    }
+  },
+  "options_ui": {
+    "page": "options/options.html"
+  },
+  "icons": {
+    "16": "icons/ico_16.png",
+    "32": "icons/ico_32.png",
+    "48": "icons/ico_48.png"
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "ai-assistant-sidebar@woobat8",
+      "data_collection_permissions": {
+        "required": ["none"]
+      }
+    }
+  }
+}

@@ -31,17 +31,17 @@ If you don't have access to the lisence, see <https://www.gnu.org/licenses/>.
 
   const runtime = {
     ...chrome.runtime,
-    sendMessage: wrapAsync(chrome.runtime.sendMessage),
+    sendMessage: wrapAsync(chrome.runtime.sendMessage.bind(chrome.runtime)),
     openOptionsPage: chrome.runtime.openOptionsPage
-      ? wrapAsync(chrome.runtime.openOptionsPage)
+      ? wrapAsync(chrome.runtime.openOptionsPage.bind(chrome.runtime))
       : undefined,
   };
 
   const storage = {
     ...chrome.storage,
     local: {
-      get: wrapAsync(chrome.storage.local.get),
-      set: wrapAsync(chrome.storage.local.set),
+      get: wrapAsync(chrome.storage.local.get.bind(chrome.storage.local)),
+      set: wrapAsync(chrome.storage.local.set.bind(chrome.storage.local)),
     },
   };
 

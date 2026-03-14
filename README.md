@@ -1,4 +1,4 @@
-<h1 align="center">AI Sidebar Chat</h1>
+<h1 align="center" href="https://ai-sidebar.chat">AI Sidebar Chat</h1>
 
 <p align="center">AI chat in a simple sidebar. Use your own API keys. Works with OpenAI, Google Gemini, and Claude. Works with Firefox-based and Chromium-based browsers.</p>
 
@@ -8,13 +8,13 @@
   <a href="#usage">Usage</a> |
   <a href="#free-api-keys">Free API Keys</a> |
   <a href="#future-plans">Future Plans</a> |
-  <a href="#known-issues">Known Issues</a> |
+  <a href="#faq-and-help">FAQ and Help</a> |
   <a href="#license-and-credits">License and Credits</a>
 </p>
 
 ## Install from Store
 >This extension requires you to have an active, working API key with either OpenAI's GPT or Google's Gemini. Your API key is stored locally and sent ONLY to the selected provider.
-### Install the latest version from the [Firefox Extensions Page!](https://addons.mozilla.org/en-US/firefox/addon/ai-assistant-sidebar/)
+### Install from our Official Site! [https://ai-sidebar.chat/#download]
 
 #### View the latest version's release notes [here.](https://github.com/Woobat-8/AI-Sidebar-Extension/releases/latest)
 #### Get a free Gemini API Key [here.](https://github.com/Woobat-8/AI-Sidebar-Extension/tree/main?tab=readme-ov-file#free-api-keys)
@@ -25,15 +25,16 @@
 ### Steps
 #### Firefox-based:
 1. Download the latest version [here.](https://github.com/Woobat-8/AI-Sidebar-Extension/releases)
-2. Go to `about:addons` → `Settings` → `Install Add-on From File` and select the `ai-sidebar-extension.zip` or `.xpi` file.
-3. To modify, unzip `ai-sidebar-extension`, open in your IDE of choice and modify!
+2. Go to `about:addons` → `Settings` → `Install Add-on From File` and select the `ai_assistant_sidebar-f.xpi`.
+3. To modify, unzip `ai_assistant_sidebar-f.zip`, open in your IDE of choice and modify!
 4. Once you've made your changes, re-zip to a `.zip` or `.xpi` file and repeat Step 2.
 5. If you don't wish to re-zip, go to `about:debugging` → `This [browser]` → `Load Temporary Add-on` and select `manifest.json` to load.
 
 #### Chromium-based (Chrome, Edge, etc.):
 1. Download the latest version [here](https://github.com/Woobat-8/AI-Sidebar-Extension/releases) and **unzip.**
-2. Go to `chrome://extensions` (or your Chromium-based browser's extensions page) and enable **Developer mode**.
-3. Click `Load unpacked` and select the unzipped `ai-sidebar-extension` folder containing `manifest.json` and select it.
+2. Go to `chrome://extensions`, open your **File Explorer** and drag-and-drop `ai_assistant_sidebar-c.crx` anywhere onto the page.
+3. The Chromium version does not auto-load, so you must start it through the Extension toolbar (top-right)!
+3. Click `Load unpacked` and select the unzipped `ai_assistant_sidebar-c`.
 4. Use from there, or modify as you wish. Remember to reload the extension in ``chrome://extensions` after modification.
 
 ## Usage
@@ -55,19 +56,18 @@
 ## Future Plans
 >One or more of these will be included in the next **minor** version.
 ### In no particular order:
-- Chromium Support (In Progress)
 - Safari Support
-- Claude AI Option (DONE - UNTESTED)
 - Deepseek Option
 - Save Chats
 - Popout sidebar
 - Read from current page (as context)
 - Upload images (for applicable models)
 
-## Known Issues
->If you've encountered an issue not listed here, report it [here.](https://github.com/Woobat-8/AI-Sidebar-Extension/issues) This covers known issues or untested features I’m aware of and actively working on. One or more will **likely** be fixed in the next **patch**.
-- Claude AI Implemented BUT untested!
+## FAQ and Help
+- Answers to basic questions can be found [here.](https://ai-sidebar.chat/#faq) (But, reading this README should have answered them already)
+- If you [additional help](https://ai-sidebar.chat/#help) please email `help@ai-sidebar.chat`.
 
 ## License and Credits
 #### Licensed under the [GPLv3 License.](https://github.com/Woobat-8/AI-Sidebar-Extension/blob/main/LICENSE) Special thanks to a friend for helping with the JavaScript files `background.js` and `chat.js`!
 #### © 2026 [Woobat8](https://github.com/Woobat-8)
+_https://ai-sidebar.chat_

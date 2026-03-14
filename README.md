@@ -1,4 +1,4 @@
-<h1 align="center" href="https://ai-sidebar.chat">AI Sidebar Chat</h1>
+<h1 align="center"><a href="https://ai-sidebar.chat">AI Sidebar Chat</a></h1>
 
 <p align="center">AI chat in a simple sidebar. Use your own API keys. Works with OpenAI, Google Gemini, and Claude. Works with Firefox-based and Chromium-based browsers.</p>
 
